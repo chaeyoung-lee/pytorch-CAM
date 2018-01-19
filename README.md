@@ -22,6 +22,8 @@ Paper Author Implementation: [metalbubble/CAM][2]
 ## Code Description
 **Usage**: `python3 main.py`
 
+**Network**: Inception V3
+
 **Data**: [Kaggle dogs vs. cats][3]
 - Download the 'test1.zip' and 'train.zip' files and upzip them.
 - Divde the total dataset into train group and test group. As you do that, [images must be arranged in this way][4]:

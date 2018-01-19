@@ -1,7 +1,7 @@
 # pytorch-CAM
 This repository is about Class Activation Mapping, written in Pytorch.
 
-## Technique Description
+## Class Activation Mapping (CAM)
 Paper and Archiecture: [Learning Deep Features for Discriminative Localization][1]
 
 Paper Author Implementation: [metalbubble/CAM][2]

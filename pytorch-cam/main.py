@@ -15,7 +15,7 @@ from inception import inception_v3
 # functions
 CAM             = 1
 USE_CUDA        = 1
-RESUME          = 10
+RESUME          = 0
 PRETRAINED      = 0
 
 
@@ -88,10 +88,7 @@ else:
 
 for epoch in range (1, EPOCH + 1):
     retrain(trainloader, net, USE_CUDA, epoch, criterion, optimizer)
-    retest(testloader, net, USE_CUDA, criterion, epoch)
-
-if RESUME != 0 and EPOCH == 0:
-    retest(testloader, net, USE_CUDA, criterion, EPOCH)
+    retest(testloader, net, USE_CUDA, criterion, epoch, RESUME)
 
 
 # hook the feature extractor

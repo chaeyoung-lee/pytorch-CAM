@@ -42,7 +42,7 @@ def retrain(trainloader, model, use_cuda, epoch, criterion, optimizer):
         f.write(str(loss_avg))
     f.close()
 
-def retest(testloader, model, use_cuda, criterion, epoch):
+def retest(testloader, model, use_cuda, criterion, epoch, RESUME):
     model.eval()
     test_loss = 0
     correct = 0
@@ -65,7 +65,7 @@ def retest(testloader, model, use_cuda, criterion, epoch):
 
     # Save checkpoint.
     if epoch % 10 == 0:
-        torch.save(model.state_dict(), 'checkpoint/' + str(int(epoch / 10)) + '.pt')
+        torch.save(model.state_dict(), 'checkpoint/' + str(RESUME + int(epoch / 10)) + '.pt')
         with open('result/result.txt', 'a') as f:
             f.write(result)
         f.close()

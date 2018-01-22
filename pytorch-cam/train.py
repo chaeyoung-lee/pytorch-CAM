@@ -4,8 +4,8 @@ from torch.autograd import Variable
 def retrain(trainloader, model, use_cuda, epoch, criterion, optimizer):
     model.train()
     correct, total = 0, 0
-    acc_sum = 0
-    loss_sum = 0
+    acc_sum, loss_sum = 0, 0
+    i = 0
     for batch_idx, (data, target) in enumerate(trainloader):
         if use_cuda:
             data, target = data.cuda(), target.cuda()
@@ -18,6 +18,7 @@ def retrain(trainloader, model, use_cuda, epoch, criterion, optimizer):
         total += trainloader.batch_size
         train_acc = 100. * correct / total
         acc_sum += train_acc
+        i += 1
 
         loss = criterion(output, target)
         loss.backward()
@@ -29,7 +30,7 @@ def retrain(trainloader, model, use_cuda, epoch, criterion, optimizer):
                 epoch, batch_idx * len(data), len(trainloader.dataset),
                 100. * batch_idx / len(trainloader), loss.data[0], train_acc))
 
-    acc_avg = acc_sum / len(trainloader.dataset)
+    acc_avg = acc_sum / i
     loss_avg = loss_sum / len(trainloader.dataset)
     print()
     print('Train Epoch: {}\tAverage Loss: {:.3f}\tAverage Accuracy: {:.3f}%'.format(epoch, loss_avg, acc_avg))

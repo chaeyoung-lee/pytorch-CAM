@@ -23,12 +23,12 @@ def retrain(trainloader, model, use_cuda, epoch, criterion, optimizer):
         loss = criterion(output, target)
         loss.backward()
         optimizer.step()
-        loss_sum += loss.data[0]
+        loss_sum += loss.item()
 
         if batch_idx % 10 == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.3f}\tTraining Accuracy: {:.3f}%'.format(
                 epoch, batch_idx * len(data), len(trainloader.dataset),
-                100. * batch_idx / len(trainloader), loss.data[0], train_acc))
+                100. * batch_idx / len(trainloader), loss.item(), train_acc))
 
     acc_avg = acc_sum / i
     loss_avg = loss_sum / len(trainloader.dataset)
@@ -52,7 +52,7 @@ def retest(testloader, model, use_cuda, criterion, epoch, RESUME):
         data, target = Variable(data, volatile=True), Variable(target)
         output = model(data)
         # sum up batch loss
-        test_loss += criterion(output, target).data[0]
+        test_loss += criterion(output, target).item()
         # get the index of the max log-probability
         pred = output.data.max(1, keepdim=True)[1]
         correct += pred.eq(target.data.view_as(pred)).cpu().sum()

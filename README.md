@@ -27,10 +27,9 @@ Paper Author Implementation: [metalbubble/CAM][2]
 **Data**: [Kaggle dogs vs. cats][3]
 - Download the 'test1.zip' and 'train.zip' files and upzip them.
 - Divde the total dataset into train group and test group. As you do that, [images must be arranged in this way][4]:
-  ```kaggle/train/cat/cat.2500.jpg
-  kaggle/train/dog/dog.2500.jpg
-  kaggle/test/cat/cat.0.jpg
-  kaggle/test/dog/dog.0.jpg
+  ```
+  kaggle/train/cat/*.jpg
+  kaggle/test/cat/*.jpg
   ```
   
 **Checkpoint**

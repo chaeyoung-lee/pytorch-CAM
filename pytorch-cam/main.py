@@ -23,7 +23,7 @@ PRETRAINED      = 0
 BATCH_SIZE      = 32
 IMG_SIZE        = 224
 LEARNING_RATE   = 0.01
-EPOCH           = 0
+EPOCH           = 10
 
 
 # prepare data

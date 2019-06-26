@@ -42,13 +42,13 @@ def get_cam(net, features_blobs, img_pil, classes, root_img):
 
     # output: the prediction
     for i in range(0, 2):
-        line = '{:.3f} -> {}'.format(probs[i].item(), classes[idx[i].item()])
+        line = '{:.3f} -> {}'.format(probs[i], classes[idx[i].item()])
         print(line)
 
-    CAMs = returnCAM(features_blobs[0], weight_softmax, [idx[0]])
+    CAMs = returnCAM(features_blobs[0], weight_softmax, [idx[0].item()])
 
     # render the CAM and output
-    print('output CAM.jpg for the top1 prediction: %s' % classes[idx[0]])
+    print('output CAM.jpg for the top1 prediction: %s' % classes[idx[0].item()])
     img = cv2.imread(root_img)
     height, width, _ = img.shape
     CAM = cv2.resize(CAMs[0], (width, height))

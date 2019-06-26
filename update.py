@@ -28,7 +28,7 @@ def get_cam(net, features_blobs, img_pil, classes, root_img):
         std=[0.229, 0.224, 0.225]
     )
     preprocess = transforms.Compose([
-        transforms.Scale((224, 224)),
+        transforms.Resize((224, 224)),
         transforms.ToTensor(),
         normalize
     ])
@@ -37,12 +37,12 @@ def get_cam(net, features_blobs, img_pil, classes, root_img):
     img_variable = Variable(img_tensor.unsqueeze(0)).cuda()
     logit = net(img_variable)
 
-    h_x = F.softmax(logit).data.squeeze()
+    h_x = F.softmax(logit, dim=1).data.squeeze()
     probs, idx = h_x.sort(0, True)
 
     # output: the prediction
     for i in range(0, 2):
-        line = '{:.3f} -> {}'.format(probs[i], classes[idx[i]])
+        line = '{:.3f} -> {}'.format(probs[i].item(), classes[idx[i].item()])
         print(line)
 
     CAMs = returnCAM(features_blobs[0], weight_softmax, [idx[0]])

@@ -57,16 +57,15 @@ testloader = DataLoader(test_data, batch_size=BATCH_SIZE, shuffle=False, num_wor
 classes = {0: 'cat', 1: 'dog'}
 
 
-# network
-net = inception_v3(pretrained=PRETRAINED)
-final_conv = 'Mixed_7c'
-
-
 # fine tuning
 if PRETRAINED:
+    net = inception_v3(pretrained=PRETRAINED)
     for param in net.parameters():
         param.requires_grad = False
     net.fc = torch.nn.Linear(2048, 2)
+else:
+    net = inception_v3(pretrained=PRETRAINED, num_classes=len(classes))
+final_conv = 'Mixed_7c'
 
 net.cuda()
 

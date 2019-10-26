@@ -1,5 +1,5 @@
 # pytorch-CAM
-This repository is about Class Activation Mapping written in PyTorch.
+This repository is an unofficial version of Class Activation Mapping written in PyTorch.
 
 ## Class Activation Mapping (CAM)
 Paper and Archiecture: [Learning Deep Features for Discriminative Localization][1]

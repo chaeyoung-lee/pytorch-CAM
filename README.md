@@ -1,10 +1,12 @@
 # pytorch-CAM
-This repository is an unofficial version of Class Activation Mapping written in PyTorch.
+This repository is an unofficial version of Class Activation Mapping written in PyTorch, modified for a simple use case.
 
 ## Class Activation Mapping (CAM)
 Paper and Archiecture: [Learning Deep Features for Discriminative Localization][1]
 
 Paper Author Implementation: [metalbubble/CAM][2]
+
+In the paper:
 
 *We propose a technique for generating class activation maps using the global average pooling (GAP) in CNNs. A class activation map for a particular category indicates the discriminative image regions used by the CNN to identify that category. The procedure for generating these maps is illustrated as follows:*
 
